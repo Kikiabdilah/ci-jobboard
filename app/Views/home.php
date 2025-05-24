@@ -1,4 +1,5 @@
-<?= $this->extend('layouts/app.php'); ?>
+<?= $this->extend('layouts/app.php');
+use PharIo\Manifest\Url; ?>
 <?= $this->section('content'); ?>
 
 
@@ -125,7 +126,7 @@
         <ul class="job-listings mb-5">
             <?php foreach ($allJobs as $jobs): ?>
                 <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-                    <a href="job-single.html"></a>
+                    <a href="<?php echo url_to('single.job', $jobs['id']); ?>"></a>
                     <div class="job-listing-logo">
                         <img src="<?= base_url('public/assets/images/' . $jobs['company_image'] . ''); ?>"
                             alt="Free Website Template by Free-Template.co" class="img-fluid">
