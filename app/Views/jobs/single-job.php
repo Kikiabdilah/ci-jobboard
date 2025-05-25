@@ -131,6 +131,16 @@
                         </div>
                     </div>
 
+                    <div class="bg-light p-3 border rounded mb-4 mt-4">
+                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+                        <ul class="list-unstyled pl-3 mb-0">
+                            <?php foreach ($allCategories as $category): ?>
+                                <li class="mb-2"><strong class="text-black"><?= $category['name']; ?></strong>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -141,7 +151,7 @@
 
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">22,392 Related Jobs</h2>
+                <h2 class="section-title mb-2"><?= $numRelatedJobs; ?> Related Jobs</h2>
             </div>
         </div>
 

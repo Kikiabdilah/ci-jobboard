@@ -119,7 +119,7 @@ use PharIo\Manifest\Url; ?>
 
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">43,167 Job Listed</h2>
+                <h2 class="section-title mb-2"><?= $numJobs; ?> Job Listed</h2>
             </div>
         </div>
 

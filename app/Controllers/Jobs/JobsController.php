@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Jobs;
 use App\Models\Job\Job;
+use App\Models\Category\Category;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -19,14 +20,19 @@ class JobsController extends BaseController
         $job = new Job();
         $singleJob = $job->find($id);
 
+        $categories = new Category();
+
         //display related jobs
 
         $relatedJobs = $this->db->query("SELECT * FROM jobs WHERE id != '$id' AND category ='$singleJob[category]' ORDER BY id DESC LIMIT 5")->getResult();
 
-        //$countRelatedJobs = $this->db->query("SELECT COUNT(*) AS count_jobs FROM jobs WHERE id != '$id' AND category ='$singleJob[category]' ORDER BY id DESC LIMIT 5");
+        $numRelatedJobs = $this->db->table("jobs")->where('id!=', $id)
+            ->where('category', $singleJob['category'])->countAllResults();
 
-        // var_dump($countRelatedJobs);
+        //categories
+        $allCategories = $categories->findAll();
 
-        return view('jobs/single-job', compact('singleJob', 'relatedJobs'));
+
+        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories'));
     }
 }
