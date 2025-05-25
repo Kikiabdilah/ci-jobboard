@@ -122,21 +122,21 @@
                     <div class="bg-light p-3 border rounded">
                         <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
                         <div class="px-3">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url('posts/single-job/' . $singleJob['id'] . ''); ?> &quote=<?php echo $singleJob['title']; ?>"
+                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> &quote=<?php echo $singleJob['title']; ?>"
                                 class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
-                            <a href="https://twitter.com/intent/tweet?text=&url=<?php echo $singleJob['title'] ?>&url=<?php echo base_url('posts/single-job/' . $singleJob['id'] . ''); ?>"
+                            <a href="https://twitter.com/intent/tweet?text=&url=<?php echo $singleJob['title'] ?>&url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?>"
                                 class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo base_url('posts/single-job/' . $singleJob['id'] . ''); ?> "
+                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> "
                                 class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
                         </div>
                     </div>
 
                     <div class="bg-light p-3 border rounded mb-4 mt-4">
-                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categories</h3>
                         <ul class="list-unstyled pl-3 mb-0">
                             <?php foreach ($allCategories as $category): ?>
-                                <li class="mb-2"><strong class="text-black"><?= $category['name']; ?></strong>
-                                </li>
+                                <li class="mb-2"><a href="<?= url_to('category.job', $category['name']); ?>"><strong
+                                            class="text-black"><?= $category['name']; ?></strong></a></li>
                             <?php endforeach; ?>
                         </ul>
                     </div>

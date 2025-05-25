@@ -1,5 +1,4 @@
-<?= $this->extend('layouts/app.php');
-use PharIo\Manifest\Url; ?>
+<?= $this->extend('layouts/app.php'); ?>
 <?= $this->section('content'); ?>
 
 

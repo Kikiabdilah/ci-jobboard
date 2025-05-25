@@ -35,4 +35,19 @@ class JobsController extends BaseController
 
         return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories'));
     }
+
+    public function category($name)
+    {
+
+        $jobsByCategory = $this->db->query("SELECT * FROM jobs WHERE category ='$name'  ORDER BY id DESC")->getResult();
+
+        $numJobs = $this->db->table("jobs")->where('category', $name)
+            ->countAllResults();
+
+        return view('jobs/jobs-category', compact('jobsByCategory', 'numJobs', 'name'));
+
+    }
+
+
+
 }

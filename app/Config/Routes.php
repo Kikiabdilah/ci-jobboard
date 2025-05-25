@@ -11,5 +11,6 @@ service('auth')->routes($routes);
 
 //Jobs
 $routes->get('jobs/single-job(:num)', 'Jobs\JobsController::singleJob/$1', ['as' => 'single.job']);
+$routes->get('jobs/category(:any)', 'Jobs\JobsController::category/$1', ['as' => 'category.job']);
 
 
