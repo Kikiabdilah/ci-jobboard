@@ -119,16 +119,21 @@
                         <?php endif; ?>
                     </div>
                     <div class="col-6">
-                        <form method="POST" action="<?= url_to('apply.jobs', $singleJob['id']) ?>">
-                            <input type="text" name="title" value="<?= $singleJob['title']; ?>">
-                            <input type="text" name="company_image" value="<?= $singleJob['company_image']; ?>">
-                            <input type="text" name="company_name" value="<?= $singleJob['company_name']; ?>">
-                            <input type="text" name="location" value="<?= $singleJob['location']; ?>">
-                            <input type="text" name="job_type" value="<?= $singleJob['job_type']; ?>">
-                            <input type="text" name="job_id" value="<?= $singleJob['id']; ?>">
-                            <input type="text" name="cv" value="<?= auth()->user()->cv; ?>">
-                            <input type="text" name="job_title" value="<?= auth()->user()->job_title ?>">
-                            <button type="submit" class="btn btn-block btn-primary btn-md">Apply Now</button>
+                        <?php if ($checkForApplyedJobs > 0): ?>
+                            <button disabled class="btn btn-block btn-light btn-md text-danger">Job Applyed</button>
+                        <?php else: ?>
+                            <form method="POST" action="<?= url_to('apply.jobs', $singleJob['id']) ?>">
+                                <input type="hidden" name="title" value="<?= $singleJob['title']; ?>">
+                                <input type="hidden" name="company_image" value="<?= $singleJob['company_image']; ?>">
+                                <input type="hidden" name="company_name" value="<?= $singleJob['company_name']; ?>">
+                                <input type="hidden" name="location" value="<?= $singleJob['location']; ?>">
+                                <input type="hidden" name="job_type" value="<?= $singleJob['job_type']; ?>">
+                                <input type="hidden" name="job_id" value="<?= $singleJob['id']; ?>">
+                                <input type="hidden" name="cv" value="<?= auth()->user()->cv; ?>">
+                                <input type="hidden" name="job_title" value="<?= auth()->user()->job_title ?>">
+                                <button type="submit" class="btn btn-block btn-primary btn-md">Apply Now</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -271,7 +276,8 @@
 
 </section>
 
-<section class="pt-5 bg-image overlay-primary fixed overlay" style="background-image: url('images/hero_1.jpg');">
+<section class="pt-5 bg-image overlay-primary fixed overlay"
+    style="background-image: url('<?= base_url('public/assets/images/hero_1.jpg') ?>');">
     <div class="container">
         <div class="row">
             <div class="col-md-6 align-self-center text-center text-md-left mb-5 mb-md-0">

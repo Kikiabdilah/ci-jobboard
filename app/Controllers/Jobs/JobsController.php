@@ -42,7 +42,15 @@ class JobsController extends BaseController
             ->countAllResults();
 
 
-        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories', 'checkForSavedJobs'));
+        //checking if the job is already applied
+        $checkForApplyedJobs = $this->db->table("applyedjobs")
+            ->where('user_id', auth()->user()->id)
+            ->where('job_id', $id)
+            ->countAllResults();
+
+
+
+        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories', 'checkForSavedJobs','checkForApplyedJobs'));
     }
 
     public function category($name)
