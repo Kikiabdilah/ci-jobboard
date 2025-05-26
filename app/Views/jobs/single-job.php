@@ -27,6 +27,18 @@
                     <?= session()->getFlashdata('success') ?>
                 </div>
             <?php endif; ?>
+
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger">
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('applyed')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('applyed') ?>
+                </div>
+            <?php endif; ?>
         </div>
         <div class="col-lg-8 mb-4 mb-lg-0">
             <div class="d-flex align-items-center">
@@ -107,7 +119,16 @@
                         <?php endif; ?>
                     </div>
                     <div class="col-6">
-                        <button class="btn btn-block btn-primary btn-md">Apply Now</button>
+                        <form method="POST" action="<?= url_to('apply.jobs', $singleJob['id']) ?>">
+                            <input type="text" name="title" value="<?= $singleJob['title']; ?>">
+                            <input type="text" name="company_image" value="<?= $singleJob['company_image']; ?>">
+                            <input type="text" name="company_name" value="<?= $singleJob['company_name']; ?>">
+                            <input type="text" name="location" value="<?= $singleJob['location']; ?>">
+                            <input type="text" name="job_type" value="<?= $singleJob['job_type']; ?>">
+                            <input type="text" name="job_id" value="<?= $singleJob['id']; ?>">
+                            <input type="text" name="cv" value="<?= auth()->user()->cv; ?>">
+                            <input type="text" name="job_title" value="<?= auth()->user()->job_title ?>">
+                            <button type="submit" class="btn btn-block btn-primary btn-md">Apply Now</button>
                     </div>
                 </div>
 

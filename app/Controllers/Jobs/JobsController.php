@@ -4,6 +4,7 @@ namespace App\Controllers\Jobs;
 use App\Models\Job\Job;
 use App\Models\Category\Category;
 use App\Models\SavedJob\SavedJob;
+use App\Models\ApplyedJob\ApplyedJob;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -77,6 +78,37 @@ class JobsController extends BaseController
         }
 
     }
+
+    public function applyJobs($id)
+    {
+
+        $applyedJob = new ApplyedJob();
+        $data = [
+            'user_id' => auth()->user()->id,
+            'company_image' => $this->request->getPost('company_image'),
+            'title' => $this->request->getPost('title'),
+            'company_name' => $this->request->getPost('company_name'),
+            'location' => $this->request->getPost('location'),
+            'job_type' => $this->request->getPost('job_type'),
+            'job_id' => $this->request->getPost('job_id'),
+            'cv' => $this->request->getPost('cv'),
+            'job_title' => $this->request->getPost('job_title'),
+            'email' => auth()->user()->email,
+
+        ];
+
+
+        if ($this->request->getPost('job_title') == 'No Job Title' or $this->request->getPost('cv') == 'CV not uploaded') {
+
+
+            return redirect()->to(base_url('jobs/single-job/' . $id . ''))->with('error', 'Update your profile with job title and CV to apply for this job!');
+        } else {
+            $applyedJob->save($data);
+            return redirect()->to(base_url('jobs/single-job/' . $id . ''))->with('applyed', 'Job applied successfully!');
+        }
+
+    }
+
 
 
 }

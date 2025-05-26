@@ -18,3 +18,5 @@ $routes->get('jobs/category/(:any)', 'Jobs\JobsController::category/$1', ['as' =
 $routes->post('jobs/save-job/(:num)', 'Jobs\JobsController::savedJobs/$1', ['as' => 'save.job']);
 
 
+//apllying jobs
+$routes->post('jobs/apply-jobs/(:num)', 'Jobs\JobsController::applyJobs/$1', ['as' => 'apply.jobs']);
