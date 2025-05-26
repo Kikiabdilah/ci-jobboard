@@ -34,7 +34,14 @@ class JobsController extends BaseController
         $allCategories = $categories->findAll();
 
 
-        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories'));
+        //checking for saved jobs
+        $checkForSavedJobs = $this->db->table("savedjobs")
+            ->where('user_id', auth()->user()->id)
+            ->where('job_id', $id)
+            ->countAllResults();
+
+
+        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories', 'checkForSavedJobs'));
     }
 
     public function category($name)
@@ -70,8 +77,6 @@ class JobsController extends BaseController
         }
 
     }
-
-
 
 
 }

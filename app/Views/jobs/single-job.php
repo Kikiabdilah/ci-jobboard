@@ -91,16 +91,20 @@
 
                 <div class="row mb-5">
                     <div class="col-6">
-                        <form method="POST" action="<?= url_to('save.job', $singleJob['id']) ?>">
-                            <input type="hidden" name="title" value="<?= $singleJob['title']; ?>">
-                            <input type="hidden" name="company_image" value="<?= $singleJob['company_image']; ?>">
-                            <input type="hidden" name="company_name" value="<?= $singleJob['company_name']; ?>">
-                            <input type="hidden" name="location" value="<?= $singleJob['location']; ?>">
-                            <input type="hidden" name="job_type" value="<?= $singleJob['job_type']; ?>">
-                            <input type="hidden" name="job_id" value="<?= $singleJob['id']; ?>">
-                            <button type="submit" class="btn btn-block btn-light btn-md">Save Job</button>
-                            <!--add text-danger to it to make it read-->
-                        </form>
+                        <?php if ($checkForSavedJobs > 0): ?>
+                            <button disabled class="btn btn-block btn-light btn-md text-danger">Job Saved</button>
+                        <?php else: ?>
+                            <form method="POST" action="<?= url_to('save.job', $singleJob['id']) ?>">
+                                <input type="hidden" name="title" value="<?= $singleJob['title']; ?>">
+                                <input type="hidden" name="company_image" value="<?= $singleJob['company_image']; ?>">
+                                <input type="hidden" name="company_name" value="<?= $singleJob['company_name']; ?>">
+                                <input type="hidden" name="location" value="<?= $singleJob['location']; ?>">
+                                <input type="hidden" name="job_type" value="<?= $singleJob['job_type']; ?>">
+                                <input type="hidden" name="job_id" value="<?= $singleJob['id']; ?>">
+                                <button type="submit" class="btn btn-block btn-light btn-md">Save Job</button>
+                                <!--add text-danger to it to make it read-->
+                            </form>
+                        <?php endif; ?>
                     </div>
                     <div class="col-6">
                         <button class="btn btn-block btn-primary btn-md">Apply Now</button>
