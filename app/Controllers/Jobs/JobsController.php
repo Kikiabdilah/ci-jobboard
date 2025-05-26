@@ -3,6 +3,7 @@
 namespace App\Controllers\Jobs;
 use App\Models\Job\Job;
 use App\Models\Category\Category;
+use App\Models\SavedJob\SavedJob;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -47,6 +48,29 @@ class JobsController extends BaseController
         return view('jobs/jobs-category', compact('jobsByCategory', 'numJobs', 'name'));
 
     }
+
+
+    public function savedJobs($id)
+    {
+
+        $saveJobs = new SavedJob();
+        $data = [
+            'user_id' => auth()->user()->id,
+            'company_image' => $this->request->getPost('company_image'),
+            'title' => $this->request->getPost('title'),
+            'company_name' => $this->request->getPost('company_name'),
+            'location' => $this->request->getPost('location'),
+            'job_type' => $this->request->getPost('job_type'),
+            'job_id' => $this->request->getPost('job_id'),
+        ];
+
+        $saveJobs->save($data);
+        if ($saveJobs) {
+            return redirect()->to(base_url('jobs/single-job/' . $id . ''))->with('success', 'Job saved successfully!');
+        }
+
+    }
+
 
 
 

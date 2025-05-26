@@ -22,128 +22,141 @@
 <section class="site-section">
     <div class="container">
         <div class="row align-items-center mb-5">
-            <div class="col-lg-8 mb-4 mb-lg-0">
-                <div class="d-flex align-items-center">
-                    <div class="border p-2 d-inline-block mr-3 rounded">
-                        <img src="<?= base_url('public/assets/images/' . $singleJob['company_image'] . ''); ?>"
-                            alt="Image">
-                    </div>
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success">
+                    <?= session()->getFlashdata('success') ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="col-lg-8 mb-4 mb-lg-0">
+            <div class="d-flex align-items-center">
+                <div class="border p-2 d-inline-block mr-3 rounded">
+                    <img src="<?= base_url('public/assets/images/' . $singleJob['company_image'] . ''); ?>" alt="Image">
+                </div>
+                <div>
+                    <h2><?= $singleJob['title']; ?></h2>
                     <div>
-                        <h2><?= $singleJob['title']; ?></h2>
-                        <div>
-                            <span class="ml-0 mr-2 mb-2"><span
-                                    class="icon-briefcase mr-2"></span><?= $singleJob['company_name']; ?></span>
-                            <span class="m-2"><span class="icon-room mr-2"></span><?= $singleJob['location']; ?></span>
-                            <span class="m-2"><span class="icon-clock-o mr-2"></span><span
-                                    class="text-primary"><?= $singleJob['job_type']; ?></span></span>
-                        </div>
+                        <span class="ml-0 mr-2 mb-2"><span
+                                class="icon-briefcase mr-2"></span><?= $singleJob['company_name']; ?></span>
+                        <span class="m-2"><span class="icon-room mr-2"></span><?= $singleJob['location']; ?></span>
+                        <span class="m-2"><span class="icon-clock-o mr-2"></span><span
+                                class="text-primary"><?= $singleJob['job_type']; ?></span></span>
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="mb-5">
-                        <figure class="mb-5"><img src="<?= base_url('public/assets/images/job_single_img_1.jpg'); ?>"
-                                alt="Image" class="img-fluid rounded"></figure>
-                        <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
-                                class="icon-align-left mr-3"></span>Job Description</h3>
-                        <p><?= $singleJob['job_description']; ?></p>
-
-                    </div>
-                    <div class="mb-5">
-                        <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
-                                class="icon-rocket mr-3"></span>Responsibilities</h3>
-                        <ul class="list-unstyled m-0 p-0">
-                            <li class="d-flex align-items-start mb-2"><span
-                                    class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['reponsibilities']; ?></span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="mb-5">
-                        <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
-                                class="icon-book mr-3"></span>Education + Experience</h3>
-                        <ul class="list-unstyled m-0 p-0">
-                            <li class="d-flex align-items-start mb-2"><span
-                                    class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['education_experience']; ?></span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="mb-5">
-                        <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
-                                class="icon-turned_in mr-3"></span>Other Benifits</h3>
-                        <ul class="list-unstyled m-0 p-0">
-                            <li class="d-flex align-items-start mb-2"><span
-                                    class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['other_benifits']; ?></span>
-                            </li>
-
-                        </ul>
-                    </div>
-
-                    <div class="row mb-5">
-                        <div class="col-6">
-                            <button class="btn btn-block btn-light btn-md"><i class="icon-heart"></i>Save Job</button>
-                            <!--add text-danger to it to make it read-->
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-block btn-primary btn-md">Apply Now</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-lg-4">
-                    <div class="bg-light p-3 border rounded mb-4">
-                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
-                        <ul class="list-unstyled pl-3 mb-0">
-                            <li class="mb-2"><strong class="text-black">Published on:</strong>
-                                <?= $singleJob['published_on']; ?></li>
-                            <li class="mb-2"><strong class="text-black">Vacancy:</strong> <?= $singleJob['vacancy']; ?>
-                            </li>
-                            <li class="mb-2"><strong class="text-black">Employment Status:</strong>
-                                <?= $singleJob['job_type']; ?></li>
-                            <li class="mb-2"><strong class="text-black">Experience:</strong>
-                                <?= $singleJob['experience']; ?></li>
-                            <li class="mb-2"><strong class="text-black">Job Location:</strong>
-                                <?= $singleJob['location']; ?></li>
-                            <li class="mb-2"><strong class="text-black">Salary:</strong> <?= $singleJob['salary']; ?>
-                            </li>
-                            <li class="mb-2"><strong class="text-black">Gender:</strong> <?= $singleJob['gender']; ?>
-                            </li>
-                            <li class="mb-2"><strong class="text-black">Application Deadline:</strong>
-                                <?= $singleJob['application_deadline']; ?>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-light p-3 border rounded">
-                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
-                        <div class="px-3">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> &quote=<?php echo $singleJob['title']; ?>"
-                                class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
-                            <a href="https://twitter.com/intent/tweet?text=&url=<?php echo $singleJob['title'] ?>&url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?>"
-                                class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
-                            <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> "
-                                class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
-                        </div>
-                    </div>
-
-                    <div class="bg-light p-3 border rounded mb-4 mt-4">
-                        <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categories</h3>
-                        <ul class="list-unstyled pl-3 mb-0">
-                            <?php foreach ($allCategories as $category): ?>
-                                <li class="mb-2"><a href="<?= url_to('category.job', $category['name']); ?>"><strong
-                                            class="text-black"><?= $category['name']; ?></strong></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="mb-5">
+                    <figure class="mb-5"><img src="<?= base_url('public/assets/images/job_single_img_1.jpg'); ?>"
+                            alt="Image" class="img-fluid rounded"></figure>
+                    <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                            class="icon-align-left mr-3"></span>Job Description</h3>
+                    <p><?= $singleJob['job_description']; ?></p>
+
+                </div>
+                <div class="mb-5">
+                    <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                            class="icon-rocket mr-3"></span>Responsibilities</h3>
+                    <ul class="list-unstyled m-0 p-0">
+                        <li class="d-flex align-items-start mb-2"><span
+                                class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['reponsibilities']; ?></span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                            class="icon-book mr-3"></span>Education + Experience</h3>
+                    <ul class="list-unstyled m-0 p-0">
+                        <li class="d-flex align-items-start mb-2"><span
+                                class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['education_experience']; ?></span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="mb-5">
+                    <h3 class="h5 d-flex align-items-center mb-4 text-primary"><span
+                            class="icon-turned_in mr-3"></span>Other Benifits</h3>
+                    <ul class="list-unstyled m-0 p-0">
+                        <li class="d-flex align-items-start mb-2"><span
+                                class="icon-check_circle mr-2 text-muted"></span><span><?= $singleJob['other_benifits']; ?></span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="row mb-5">
+                    <div class="col-6">
+                        <form method="POST" action="<?= url_to('save.job', $singleJob['id']) ?>">
+                            <input type="hidden" name="title" value="<?= $singleJob['title']; ?>">
+                            <input type="hidden" name="company_image" value="<?= $singleJob['company_image']; ?>">
+                            <input type="hidden" name="company_name" value="<?= $singleJob['company_name']; ?>">
+                            <input type="hidden" name="location" value="<?= $singleJob['location']; ?>">
+                            <input type="hidden" name="job_type" value="<?= $singleJob['job_type']; ?>">
+                            <input type="hidden" name="job_id" value="<?= $singleJob['id']; ?>">
+                            <button type="submit" class="btn btn-block btn-light btn-md">Save Job</button>
+                            <!--add text-danger to it to make it read-->
+                        </form>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-block btn-primary btn-md">Apply Now</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="bg-light p-3 border rounded mb-4">
+                    <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Job Summary</h3>
+                    <ul class="list-unstyled pl-3 mb-0">
+                        <li class="mb-2"><strong class="text-black">Published on:</strong>
+                            <?= $singleJob['published_on']; ?></li>
+                        <li class="mb-2"><strong class="text-black">Vacancy:</strong> <?= $singleJob['vacancy']; ?>
+                        </li>
+                        <li class="mb-2"><strong class="text-black">Employment Status:</strong>
+                            <?= $singleJob['job_type']; ?></li>
+                        <li class="mb-2"><strong class="text-black">Experience:</strong>
+                            <?= $singleJob['experience']; ?></li>
+                        <li class="mb-2"><strong class="text-black">Job Location:</strong>
+                            <?= $singleJob['location']; ?></li>
+                        <li class="mb-2"><strong class="text-black">Salary:</strong> <?= $singleJob['salary']; ?>
+                        </li>
+                        <li class="mb-2"><strong class="text-black">Gender:</strong> <?= $singleJob['gender']; ?>
+                        </li>
+                        <li class="mb-2"><strong class="text-black">Application Deadline:</strong>
+                            <?= $singleJob['application_deadline']; ?>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-light p-3 border rounded">
+                    <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Share</h3>
+                    <div class="px-3">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> &quote=<?php echo $singleJob['title']; ?>"
+                            class="pt-3 pb-3 pr-3 pl-0"><span class="icon-facebook"></span></a>
+                        <a href="https://twitter.com/intent/tweet?text=&url=<?php echo $singleJob['title'] ?>&url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?>"
+                            class="pt-3 pb-3 pr-3 pl-0"><span class="icon-twitter"></span></a>
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo base_url('jobs/single-job/' . $singleJob['id'] . ''); ?> "
+                            class="pt-3 pb-3 pr-3 pl-0"><span class="icon-linkedin"></span></a>
+                    </div>
+                </div>
+
+                <div class="bg-light p-3 border rounded mb-4 mt-4">
+                    <h3 class="text-primary  mt-3 h5 pl-3 mb-3 ">Categories</h3>
+                    <ul class="list-unstyled pl-3 mb-0">
+                        <?php foreach ($allCategories as $category): ?>
+                            <li class="mb-2"><a href="<?= url_to('category.job', $category['name']); ?>"><strong
+                                        class="text-black"><?= $category['name']; ?></strong></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </section>
 
 <section class="site-section" id="next">
