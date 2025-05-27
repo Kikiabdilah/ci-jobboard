@@ -55,9 +55,6 @@
                         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
                             <li><a href="<?= url_to('home'); ?>" class="nav-link active">Home</a></li>
                             <li><a href="about.html">About</a></li>
-
-                            <li><a href="profile.html">Profile</a></li>
-
                             <li><a href="contact.html">Contact</a></li>
 
                             <?php if (auth()->loggedIn()): ?>
@@ -67,7 +64,8 @@
                                         <?php echo esc(auth()->user()->username); ?>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
+                                        <a class="dropdown-item" href="<?= url_to('public.profile.users'); ?>">Public
+                                            Profile</a>
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= base_url('logout'); ?>">Logout</a>
