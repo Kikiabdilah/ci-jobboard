@@ -72,8 +72,8 @@
                                     </div>
                                 </li>
                             <?php else: ?>
-                                <li class="d-lg-none"><a href="<?= base_url('login'); ?>">Log In</a></li>
-                                <li class="d-lg-none"><a href="<?= base_url('register'); ?>">Register</a></li>
+                                <li><a href="<?= base_url('login'); ?>">Log In</a></li>
+                                <li><a href="<?= base_url('register'); ?>">Register</a></li>
                             <?php endif; ?>
                             <li class="d-lg-none"><a href="post-job.html"><span class="mr-2">+</span> Post a Job</a>
                             </li>
