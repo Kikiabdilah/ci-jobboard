@@ -64,9 +64,11 @@
                                         <?php echo esc(auth()->user()->username); ?>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= url_to('public.profile.users'); ?>">Public
+                                        <a class="dropdown-item"
+                                            href="<?= url_to('public.profile.users', auth()->user()->id); ?>">Public
                                             Profile</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
+                                        <a class="dropdown-item" href="<?= url_to('update.profile.users'); ?>">Update
+                                            Profile</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= base_url('logout'); ?>">Logout</a>
                                     </div>

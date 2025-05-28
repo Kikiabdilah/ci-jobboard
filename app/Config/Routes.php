@@ -22,4 +22,8 @@ $routes->post('jobs/save-job/(:num)', 'Jobs\JobsController::savedJobs/$1', ['as'
 $routes->post('jobs/apply-jobs/(:num)', 'Jobs\JobsController::applyJobs/$1', ['as' => 'apply.jobs']);
 
 //User Profile
-$routes->get('users/public-profile', 'Users\UsersController::publicProfile/$1', ['as' => 'public.profile.users']);
+$routes->get('users/public-profile/(:num)', 'Users\UsersController::publicProfile/$1', ['as' => 'public.profile.users']);
+
+//updating user profile
+$routes->get('users/update-profile', 'Users\UsersController::updateProfile', ['as' => 'update.profile.users']);
+$routes->post('users/update-profile', 'Users\UsersController::submitUpdateProfile', ['as' => 'submit.profile.users']);
