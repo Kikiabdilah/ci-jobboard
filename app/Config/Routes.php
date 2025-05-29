@@ -27,3 +27,8 @@ $routes->get('users/public-profile/(:num)', 'Users\UsersController::publicProfil
 //updating user profile
 $routes->get('users/update-profile', 'Users\UsersController::updateProfile', ['as' => 'update.profile.users']);
 $routes->post('users/update-profile', 'Users\UsersController::submitUpdateProfile', ['as' => 'submit.profile.users']);
+
+
+//update user cv
+$routes->get('users/update-cv', 'Users\UsersController::updateCV', ['as' => 'update.cv.users']);
+$routes->post('users/update-cv', 'Users\UsersController::submitUpdateCV', ['as' => 'submit.cv.users']);

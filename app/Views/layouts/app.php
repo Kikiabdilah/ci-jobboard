@@ -69,6 +69,8 @@
                                             Profile</a>
                                         <a class="dropdown-item" href="<?= url_to('update.profile.users'); ?>">Update
                                             Profile</a>
+                                        <a class="dropdown-item" href="<?= url_to('update.cv.users'); ?>">Update
+                                            CV</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= base_url('logout'); ?>">Logout</a>
                                     </div>

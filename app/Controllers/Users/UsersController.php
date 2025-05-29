@@ -55,6 +55,32 @@ class UsersController extends BaseController
         }
     }
 
+    public function updateCV()
+    {
+
+
+        return view('users/update-cv');
+    }
+
+
+    public function submitUpdateCV()
+    {
+        $id = auth()->user()->id;
+        $file = $this->request->getFile('cv');
+
+        if (!$file || !$file->isValid()) {
+            return redirect()->back()->with('error', 'No file uploaded or file is invalid.');
+        }
+
+        $file->move('public/assets/cvs');
+        $fileName = $file->getClientName();
+
+        $UpdateCV = $this->db->query("UPDATE users SET cv='$fileName' WHERE id = '$id'");
+
+        if ($UpdateCV) {
+            return redirect()->to(base_url('users/update-cv/'))->with('update', 'CV Updated successfully!');
+        }
+    }
 
 
 
