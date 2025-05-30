@@ -7,30 +7,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1 class="text-white font-weight-bold"> <?= $name ?></h1>
+                <h1 class="text-white font-weight-bold">Saved Jobs</h1>
                 <div class="custom-breadcrumbs">
                     <a href="<?= url_to('home') ?>">Home</a> <span class="mx-2 slash">/</span>
-                    <span class="text-white"><strong> <?= $name ?></strong></span>
+                    <span class="text-white"><strong>Saved Jobs</strong></span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
 <section class="site-section">
     <div class="container">
 
         <div class="row mb-5 justify-content-center">
             <div class="col-md-7 text-center">
-                <h2 class="section-title mb-2">We Have <?= $numJobs ?> Jobs in <?= $name ?> Category</h2>
+                <h2 class="section-title mb-2">Saved Jobs</h2>
             </div>
         </div>
 
         <ul class="job-listings mb-5">
-            <?php foreach ($jobsByCategory as $jobs): ?>
+            <?php foreach ($savedJobs as $jobs): ?>
                 <li class="job-listing d-block d-sm-flex pb-3 pb-sm-0 align-items-center">
-                    <a href="<?php echo url_to('single.job', $jobs->id); ?>"></a>
+                    <a href="<?php echo url_to('single.job', $jobs->job_id); ?>"></a>
                     <div class="job-listing-logo">
                         <img src="<?= base_url('public/assets/images/' . $jobs->company_image . ''); ?>"
                             alt="Free Website Template by Free-Template.co" class="img-fluid">

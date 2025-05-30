@@ -71,6 +71,10 @@
                                             Profile</a>
                                         <a class="dropdown-item" href="<?= url_to('update.cv.users'); ?>">Update
                                             CV</a>
+                                        <a class="dropdown-item" href="<?= url_to('saved.jobs.users'); ?>">Saved Jobs
+                                        </a>
+                                        <a class="dropdown-item" href="<?= url_to('applyed.jobs.users'); ?>">Applyed Jobs
+                                        </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= base_url('logout'); ?>">Logout</a>
                                     </div>

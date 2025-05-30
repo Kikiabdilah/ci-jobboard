@@ -83,5 +83,31 @@ class UsersController extends BaseController
     }
 
 
+    public function userSavedJobs()
+    {
+        $id = auth()->user()->id;
+
+        $savedJobs = $this->db->query("SELECT * FROM savedjobs WHERE user_id = '$id'")->getResult();
+
+        // var_dump($singleUser);
+
+        return view('users/saved-jobs', compact('savedJobs'));
+    }
+
+
+    public function userApplyedJobs()
+    {
+        $id = auth()->user()->id;
+
+        $applyedJobs = $this->db->query("SELECT * FROM applyedjobs WHERE user_id = '$id'")->getResult();
+
+        // var_dump($singleUser);
+
+        return view('users/applyed-jobs', compact('applyedJobs'));
+    }
+
+
+
+
 
 }

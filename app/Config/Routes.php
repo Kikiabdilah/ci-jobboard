@@ -32,3 +32,9 @@ $routes->post('users/update-profile', 'Users\UsersController::submitUpdateProfil
 //update user cv
 $routes->get('users/update-cv', 'Users\UsersController::updateCV', ['as' => 'update.cv.users']);
 $routes->post('users/update-cv', 'Users\UsersController::submitUpdateCV', ['as' => 'submit.cv.users']);
+
+
+//get user saved jobs
+$routes->get('users/saved-jobs', 'Users\UsersController::userSavedJobs', ['as' => 'saved.jobs.users']);
+//get user applied jobs
+$routes->get('users/applyed-jobs', 'Users\UsersController::userApplyedJobs', ['as' => 'applyed.jobs.users']);
