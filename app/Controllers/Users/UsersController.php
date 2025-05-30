@@ -26,6 +26,11 @@ class UsersController extends BaseController
 
     public function updateProfile()
     {
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
+
         $id = auth()->user()->id;
 
         $singleUser = $this->db->query("SELECT * FROM users WHERE id = '$id'")->getFirstRow();
@@ -33,10 +38,17 @@ class UsersController extends BaseController
         // var_dump($singleUser);
 
         return view('users/update-profile', compact('singleUser'));
+
     }
 
     public function submitUpdateProfile()
     {
+
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
+
         $id = auth()->user()->id;
 
         $username = $this->request->getPost('username');
@@ -58,6 +70,10 @@ class UsersController extends BaseController
     public function updateCV()
     {
 
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
 
         return view('users/update-cv');
     }
@@ -65,6 +81,12 @@ class UsersController extends BaseController
 
     public function submitUpdateCV()
     {
+
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
+
         $id = auth()->user()->id;
         $file = $this->request->getFile('cv');
 
@@ -85,6 +107,13 @@ class UsersController extends BaseController
 
     public function userSavedJobs()
     {
+
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
+
+
         $id = auth()->user()->id;
 
         $savedJobs = $this->db->query("SELECT * FROM savedjobs WHERE user_id = '$id'")->getResult();
@@ -97,6 +126,12 @@ class UsersController extends BaseController
 
     public function userApplyedJobs()
     {
+
+        // Check if the user is authenticated
+        if (!isset(auth()->user()->id)) {
+            return redirect()->to(base_url());
+        }
+
         $id = auth()->user()->id;
 
         $applyedJobs = $this->db->query("SELECT * FROM applyedjobs WHERE user_id = '$id'")->getResult();
