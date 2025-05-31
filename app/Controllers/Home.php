@@ -11,7 +11,7 @@ class Home extends BaseController
     }
 
 
-    public function index(): string
+    public function index()
     {
 
         $jobs = new Job();
@@ -22,4 +22,18 @@ class Home extends BaseController
 
         return view('home', compact('allJobs', 'numJobs'));
     }
+
+
+    public function contact()
+    {
+
+        return view('pages/contact');
+    }
+
+    public function about()
+    {
+
+        return view('pages/about');
+    }
+
 }

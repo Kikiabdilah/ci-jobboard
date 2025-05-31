@@ -54,8 +54,8 @@
                     <nav class="mx-auto site-navigation">
                         <ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
                             <li><a href="<?= url_to('home'); ?>" class="nav-link active">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="<?= url_to('about'); ?>">About</a></li>
+                            <li><a href="<?= url_to('contact'); ?>">Contact</a></li>
 
                             <?php if (auth()->loggedIn()): ?>
                                 <li class="nav-item dropdown">

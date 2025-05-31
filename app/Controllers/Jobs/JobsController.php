@@ -36,21 +36,27 @@ class JobsController extends BaseController
 
 
         //checking for saved jobs
-        $checkForSavedJobs = $this->db->table("savedjobs")
-            ->where('user_id', auth()->user()->id)
-            ->where('job_id', $id)
-            ->countAllResults();
+        if (isset(auth()->user()->id)) {
+            $checkForSavedJobs = $this->db->table("savedjobs")
+                ->where('user_id', auth()->user()->id)
+                ->where('job_id', $id)
+                ->countAllResults();
 
 
-        //checking if the job is already applied
-        $checkForApplyedJobs = $this->db->table("applyedjobs")
-            ->where('user_id', auth()->user()->id)
-            ->where('job_id', $id)
-            ->countAllResults();
+            //checking if the job is already applied
+            $checkForApplyedJobs = $this->db->table("applyedjobs")
+                ->where('user_id', auth()->user()->id)
+                ->where('job_id', $id)
+                ->countAllResults();
+
+            return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories', 'checkForSavedJobs', 'checkForApplyedJobs'));
+
+        } else {
+            return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories'));
+        }
 
 
 
-        return view('jobs/single-job', compact('singleJob', 'relatedJobs', 'numRelatedJobs', 'allCategories', 'checkForSavedJobs','checkForApplyedJobs'));
     }
 
     public function category($name)

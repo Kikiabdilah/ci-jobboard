@@ -6,7 +6,8 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index', ['as' => 'home']);
-;
+$routes->get('/contact', 'Home::contact', ['as' => 'contact']);
+$routes->get('/about', 'Home::about', ['as' => 'about']);
 
 service('auth')->routes($routes);
 
