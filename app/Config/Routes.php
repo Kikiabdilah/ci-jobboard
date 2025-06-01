@@ -22,6 +22,9 @@ $routes->post('jobs/save-job/(:num)', 'Jobs\JobsController::savedJobs/$1', ['as'
 //apllying jobs
 $routes->post('jobs/apply-jobs/(:num)', 'Jobs\JobsController::applyJobs/$1', ['as' => 'apply.jobs']);
 
+//Search Jobs
+$routes->post('jobs/search-jobs', 'Jobs\JobsController::searchJobs', ['as' => 'search.jobs']);
+
 //User Profile
 $routes->get('users/public-profile/(:num)', 'Users\UsersController::publicProfile/$1', ['as' => 'public.profile.users']);
 

@@ -14,30 +14,25 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate est, consequuntur
                         perferendis.</p>
                 </div>
-                <form method="post" class="search-jobs-form">
+                <form method="post" action="<?= url_to('search.jobs'); ?>" class="search-jobs-form">
                     <div class="row mb-5">
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <input type="text" class="form-control form-control-lg" placeholder="Job title, Company...">
+                            <input type="text" name="title" class="form-control form-control-lg"
+                                placeholder="Job title, Company...">
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
+                            <select name="location" class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
                                 data-live-search="true" title="Select Region">
-                                <option>Anywhere</option>
-                                <option>San Francisco</option>
-                                <option>Palo Alto</option>
-                                <option>New York</option>
-                                <option>Manhattan</option>
-                                <option>Ontario</option>
-                                <option>Toronto</option>
-                                <option>Kansas</option>
-                                <option>Mountain View</option>
+                                <option value="New York City">New York City</option>
+                                <option value="California">California</option>
+
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-                            <select class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
+                            <select name="job_type" class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
                                 data-live-search="true" title="Select Job Type">
-                                <option>Part Time</option>
-                                <option>Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Full Time">Full Time</option>
                             </select>
                         </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">

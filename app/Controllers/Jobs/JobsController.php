@@ -123,6 +123,26 @@ class JobsController extends BaseController
 
     }
 
+    public function searchJobs()
+    {
+
+        $jobs = new Job();
+        $title = $this->request->getPost('title');
+        $location = $this->request->getPost('location');
+        $job_type = $this->request->getPost('job_type');
+
+        $searches = $jobs->like('title', $title)
+            ->like('location', $location)
+            ->like('job_type', $job_type)
+            //->orderBy('id', 'DESC')
+            ->findAll();
+
+
+        return view('jobs/searches', compact('searches', 'title'));
+
+    }
+
+
 
 
 }
